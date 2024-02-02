@@ -1,4 +1,5 @@
-const { evaluateRegex } = require('./util')
+const { evaluateRegex } = require('./util');
+const Person = require('./Person');
 
 /**
  * O objetivo do Fluent API é executar tarefas
@@ -31,7 +32,6 @@ class TextProcessorFluentAPI {
 
         const matchPerson = evaluateRegex(/(?<=[contratante|contratada]:\s{1})(?!\s)(.*\n.*?)$/gmi)
         const onlyPerson = this.#content.match(matchPerson)
-
         this.#content = onlyPerson
 
         return this;
@@ -47,7 +47,14 @@ class TextProcessorFluentAPI {
 
     removeEmptyCharacters() {
         const regexTrim = evaluateRegex(/^\s+|\s+$|\n/g)
-        this.#content = this.#content.map(line => line.replace(regexTrim, ''))
+
+        this.#content = this.#content.map(line => line.map(field => field.replace(regexTrim, '')))
+        return this
+    }
+
+    matchPerson() {
+        this.#content = this.#content.map(line => new Person(line))
+
         return this
     }
 

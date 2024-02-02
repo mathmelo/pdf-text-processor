@@ -17,7 +17,7 @@ time \
 node --eval "/^([a-zA-Z0-9]+\s?)+$/.test('eaaae man como vai voce e como vai voce e como vai voce?') && console.log('legal')"
          */
 
-        expect(() => evaluateRegex(safeRegex)).to.not.throw
+        expect(() => evaluateRegex(safeRegex)).to.not.throw()
         expect(evaluateRegex(safeRegex)).to.be.ok
     })
 })

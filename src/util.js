@@ -8,11 +8,11 @@ class InvalidRegexError extends Error {
 }
 
 const evaluateRegex = (exp) => {
-    const isValid = safeRegex(exp)
+    const isValid = safeRegex(exp);
 
     if(isValid) return exp;
     
-    throw new InvalidRegexError(exp)
+    throw new InvalidRegexError(exp);
 }
 
 module.exports = { InvalidRegexError, evaluateRegex }

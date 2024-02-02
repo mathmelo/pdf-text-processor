@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src",
     "test": "npx mocha --parallel ./tests/*.test.js",
-    "test:cov": "npx nyc mocha -parallel ./tests/*.test.js"
+    "test:cov": "npx nyc npx mocha --parallel ./tests/*.test.js"
   },
   "keywords": [],
   "type": "commonjs",
